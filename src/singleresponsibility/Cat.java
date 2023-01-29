@@ -3,6 +3,9 @@ package singleresponsibility;
 import java.time.LocalDate;
 import java.util.Arrays;
 
+/**
+ * modélise ce qu'est un chat (dans le contexte de notre application)
+ */
 public class Cat {
     private String breed;   // race
     private LocalDate birth;
