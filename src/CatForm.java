@@ -6,7 +6,7 @@ public class CatForm {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scanner = new Scanner(System.in);
         PrintWriter printWriter = new PrintWriter(new FileOutputStream("cats.csv", true));
-        boolean next = false;
+        boolean next;
 
         System.out.println("\nFormulaire d'encodage d'un chat\n");
         do {
@@ -24,12 +24,21 @@ public class CatForm {
 
             Cat cat = new Cat(breed, birth, weigth, size, colors);
 
-            printWriter.append(cat.getBreed() + ";" + cat.getBirth() + ";" + cat.getWeight() + ";" + cat.getSize() +
-                    ";" + String.join(" ", cat.getColors()) + "\n");
+            printWriter.
+                    append(cat.getBreed())
+                    .append(";")
+                    .append(String.valueOf(cat.getBirth()))
+                    .append(";")
+                    .append(String.valueOf(cat.getWeight()))
+                    .append(";")
+                    .append(String.valueOf(cat.getSize()))
+                    .append(";")
+                    .append(String.join(" ", cat.getColors()))
+                    .append("\n");
             printWriter.flush();    // pas nécessaire mais facile les tests
 
-            System.out.print("\nVoulez vous encoder un autre chat (O/N) ?");
-            next = scanner.nextLine().toUpperCase().equals("O");
+            System.out.print("\nVoulez vous encoder un autre chat (O/N) ? ");
+            next = scanner.nextLine().equalsIgnoreCase("O");
         } while (next);
         printWriter.close();
         scanner.close();
